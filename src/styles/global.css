@@ -1,0 +1,29 @@
+@import url('./vars.css');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+body {
+  font-family: var(--font-family-text);
+  background-color: var(--purple-light-1);
+  color: var(--purple-dark-2);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}
