@@ -21,6 +21,15 @@ body {
   min-height: 100vh;
 }
 
+button {
+  background-color: var(--purple-dark-1);
+  border: none;
+  color: var(--purple-light-2);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-text2);
+}
+
 .container {
   max-width: 1200px;
   margin-left: auto;

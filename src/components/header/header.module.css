@@ -29,14 +29,9 @@
 }
 
 .header__searchButton{
-  background-color: var(--purple-dark-1);
   border-top-right-radius: .5rem;
   border-bottom-right-radius: .5rem;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
   width: 56px;
-  transition: transform 300ms;
 }
 
 @media screen and (max-width: 530px) {
