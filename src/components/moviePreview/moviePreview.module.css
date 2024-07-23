@@ -6,12 +6,6 @@
   gap: 1rem;
 }
 
-.moviePreview__title {
-  color: var(--purple-dark-1);
-  font-size: 1.125rem;
-  font-weight: var(--font-weight-title2);
-}
-
 .moviePreview__viewMore {
   border-radius: .5rem;
   padding: .5rem;

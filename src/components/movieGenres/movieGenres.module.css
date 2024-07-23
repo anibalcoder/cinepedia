@@ -1,7 +1,4 @@
 .movieGenre__title {
-  color: var(--purple-dark-1);
-  font-weight: var(--font-weight-title2);
-  font-size: 1.125rem;
   margin-bottom: 1.5rem;
 }
 
@@ -19,9 +16,6 @@
 }
 
 .movieGenre__category {
-  color: var(--purple-dark-2);
-  font-weight: var(--font-weight-text2);
-  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
