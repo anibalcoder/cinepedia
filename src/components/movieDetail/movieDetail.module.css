@@ -1,0 +1,21 @@
+.movieDetail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.movieDetail__title {
+  display: inline-block;
+}
+
+.movieDetail__vote {
+  font-weight: var(--font-weight-title2);
+
+  &::before {
+    content: '★';
+    color: var(--yellow);
+    padding-right: .25rem;
+  }
+}

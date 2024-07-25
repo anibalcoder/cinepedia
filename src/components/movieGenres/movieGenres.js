@@ -3,7 +3,7 @@ import getTmdbData from '../../api/getTmdbData.js';
 import './category.css';
 import styles from './movieGenres.module.css';
 
-async function createMovieGenres({ title, urlApi }) {
+async function createMovieGenres({ title = false, urlApi }) {
   try {
     const section = document.createElement('section');
     const data = await getTmdbData(urlApi);
@@ -27,7 +27,7 @@ async function createMovieGenres({ title, urlApi }) {
     section.innerHTML = template({ title, styles, genres:data.genres });
     return section;
   } catch (err) {
-    console.log(err)
+    console.log('Error al crear createMovieGenres:', err.message);
   }
 }
 

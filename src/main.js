@@ -1,22 +1,30 @@
 import './styles/global.css';
 import './styles/vars.css';
-import createHeader from './components/header/header.js';
-import createMoviePreview from './components/moviePreview/moviePreview.js';
-import createMovieGenres from './components/movieGenres/movieGenres.js';
-const API_BASE = import.meta.env.VITE_API_BASE;
+import homePage from "./ui/home.js";
+import moviePage from './ui/movie.js';
+import setupClickHandler from './utils/setupClickHandler.js';
 
-const APP = document.getElementById('app');
-APP.appendChild(createHeader());
+const app = document.getElementById('app');
 
-const moviePreview = await createMoviePreview({
-  title: 'Tendencias', 
-  button: true, 
-  urlApi: `${API_BASE}/trending/all/day?language=es-ES`
-})
-APP.appendChild(moviePreview);
+async function updateView() {
+  try {
+    app.innerHTML = '';
 
-const movieGenres = await createMovieGenres({
-  title: 'Categorías',
-  urlApi: `${API_BASE}/genre/movie/list?language=es-ES`
-})
-APP.appendChild(movieGenres);
+    if (location.hash.startsWith('#movie=')) {
+      const movieID = parseInt(location.hash.slice(7));
+      await moviePage(app, movieID);
+    } else {
+      await homePage(app);
+    }
+
+    setupClickHandler({
+      containerId: 'movieList',
+      triggerSelector: 'img'
+    });
+  } catch(err) {
+    console.error('Error al actualizar la vista:', err.message);
+  }
+}
+
+window.addEventListener('popstate', updateView);
+window.addEventListener('load', updateView);
