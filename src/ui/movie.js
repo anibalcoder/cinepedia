@@ -1,27 +1,26 @@
-import createHeader from '../components/header/header.js';
 import createMovieDetail from '../components/movieDetail/movieDetail.js';
 import createMovieGenres from '../components/movieGenres/movieGenres.js';
 import createMoviePreview from '../components/moviePreview/moviePreview.js';
-const API_BASE = import.meta.env.VITE_API_BASE;
+import { API_URL_BASE } from '../api/urlBase.js';
 
-async function moviePage(app, movieID) {
+async function moviePage({ app, movieId }) {
   try {
-    const header = createHeader();
-
-    const movieDetail = await createMovieDetail(`${API_BASE}/movie/${movieID}?language=en-US`);
+    const movieDetail = await createMovieDetail({
+      urlApi: `${API_URL_BASE}/movie/${movieId}?language=en-US`
+    });
 
     const movieGenres = await createMovieGenres({
-      urlApi: `${API_BASE}/movie/${movieID}?language=en-US`
+      urlApi: `${API_URL_BASE}/movie/${movieId}?language=en-US`
     });
 
     const moviePreview = await createMoviePreview({
       title: 'Películas similares',
-      urlApi: `${API_BASE}/movie/${movieID}/similar?language=en-US&page=1`
+      urlApi: `${API_URL_BASE}/movie/${movieId}/similar?language=en-US`
     });
 
-    app.append(header, movieDetail, movieGenres, moviePreview);
+    app.append(movieDetail, movieGenres, moviePreview);
   } catch(err) {
-    console.error('Error al crear la página detalles de peliculas: ', err.message);
+    console.error('Error en moviePage: ', err.message);
   }
 }
 

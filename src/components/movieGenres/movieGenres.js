@@ -1,6 +1,6 @@
+import './categoryColor.css';
 import Handlebars from 'handlebars';
 import getTmdbData from '../../api/getTmdbData.js';
-import './category.css';
 import styles from './movieGenres.module.css';
 
 async function createMovieGenres({ title = false, urlApi }) {
@@ -14,10 +14,10 @@ async function createMovieGenres({ title = false, urlApi }) {
           <h2 class="{{styles.movieGenre__title}}">{{title}}</h2>
         {{/if}}
 
-        <article class="{{styles.movieGenre__list}}">
+        <article class="{{styles.movieGenre__list}}" id="movieGenreList">
           {{#each genres}}
             <div class="{{../styles.movieGenre__item}}">
-              <h3 class="{{../styles.movieGenre__category}}" id="category{{this.id}}">{{this.name}}</h3>
+              <h3 class="{{../styles.movieGenre__category}}" data-id="{{this.id}}">{{this.name}}</h3>
             </div>
           {{/each}}
         </article>

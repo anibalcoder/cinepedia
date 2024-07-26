@@ -10,14 +10,14 @@ function createHeader() {
         <span>Cinepedia</span>
       </a>
       <form class="{{styles.header__form}}">
-        <input type="search" placeholder="Vengadores" class="{{styles.header__inputSearch}}">
-        <button type="button" class="{{styles.header__searchButton}}">🔍</button>
+        <input type="search" id="searchText" placeholder="Search for a movie" class="{{styles.header__inputSearch}}">
+        <button type="button" id="searchBtn" class="{{styles.header__searchButton}}">🔍</button>
       </form>
     </div>
   `);
 
   header.innerHTML = template({ styles });
-  return header
+  return header;
 }
 
 export default createHeader;

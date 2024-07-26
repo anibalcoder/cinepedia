@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import getTmdbData from "../../api/getTmdbData.js";
 import styles from './moviePreview.module.css';
+import { IMG_URL_BASE } from "../../api/urlBase.js";
 
 async function createMoviePreview({ title, button = false, urlApi }) {
   try {
@@ -12,13 +13,13 @@ async function createMoviePreview({ title, button = false, urlApi }) {
         <header class="{{styles.moviePreview__header}}">
           <h2 class="{{styles.moviePreview__title}}">{{title}}</h2>
           {{#if button}}
-            <button class="{{styles.moviePreview__viewMore}}">Ver más</button>
+            <button class="{{styles.moviePreview__viewMore}}" id="viewMore">Ver más</button>
           {{/if}}
         </header>
-        <ul class="{{styles.moviePreview__list}}" id="movieList">
+        <ul class="{{styles.moviePreview__list}}" id="moviePreviewList">
           {{#each movies}}
-            <li class="{{../styles.moviePreview__item}}">
-              <img class="{{../styles.moviePreview__image}}" src="https://image.tmdb.org/t/p/w300{{this.poster_path}}" alt="{{this.title}}" data-id="{{this.id}}" />
+            <li class="{{../styles.moviePreview__item}}" data-id="{{this.id}}">
+              <img class="{{../styles.moviePreview__image}}" src="${IMG_URL_BASE}/w300{{this.poster_path}}" alt="{{this.title}}" />
               <button class="{{../styles.moviePreview__btn}}">🤍</button>
             </li>
           {{/each}}

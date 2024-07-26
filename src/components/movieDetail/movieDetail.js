@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import getTmdbData from "../../api/getTmdbData.js"
 import styles from "./movieDetail.module.css";
 
-async function createMovieDetail(urlApi) {
+async function createMovieDetail({ urlApi }) {
   try {
     const section = document.createElement('section');
     const data = await getTmdbData(urlApi);
