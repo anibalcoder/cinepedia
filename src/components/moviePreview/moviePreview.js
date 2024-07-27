@@ -19,7 +19,15 @@ async function createMoviePreview({ title, button = false, urlApi }) {
         <ul class="{{styles.moviePreview__list}}" id="moviePreviewList">
           {{#each movies}}
             <li class="{{../styles.moviePreview__item}}" data-id="{{this.id}}">
-              <img class="{{../styles.moviePreview__image}}" src="${IMG_URL_BASE}/w300{{this.poster_path}}" alt="{{this.title}}" />
+              <img
+                class="{{../styles.moviePreview__image}} container-loading lazy"
+                {{#if this.poster_path}}
+                  data-img="${IMG_URL_BASE}/w300{{this.poster_path}}"
+                {{/if}}
+                data-img="/404-not-found.webp"
+                src=""
+                alt="{{this.title}}"
+              />
               <button class="{{../styles.moviePreview__btn}}">🤍</button>
             </li>
           {{/each}}

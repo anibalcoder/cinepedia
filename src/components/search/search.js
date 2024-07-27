@@ -13,7 +13,15 @@ async function createSearch(urlApi) {
         <ul class="{{styles.search__list}}" id="moviePreviewList">
           {{#each search}}
             <li class="{{../styles.search__item}}" data-id="{{this.id}}">
-              <img class="{{../styles.search__itemImg}}" src="${IMG_URL_BASE}/w300{{this.poster_path}}" alt="{{this.title}}" />
+              <img 
+                class="{{../styles.search__itemImg}} container-loading lazy"
+                {{#if this.poster_path}}
+                  data-img="${IMG_URL_BASE}/w300{{this.poster_path}}"
+                {{/if}}
+                data-img="/404-not-found.webp"
+                src=""
+                alt="{{this.title}}"
+              />
               <button class="{{../styles.search__itemBtn}}">🤍</button>
             </li>
           {{/each}}

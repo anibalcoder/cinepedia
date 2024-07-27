@@ -7,6 +7,7 @@ import searchPage from './ui/search.js';
 import setupMovieClicks from './utils/setupMovieClicks.js';
 import setupViewMoreClick from './utils/setupViewMoreClick.js';
 import setupSearchClick from './utils/setupSearchClick.js';
+import lazyLoader from './utils/lazyLoader.js'
 
 const app = document.getElementById('app');
 const header = createHeader();
@@ -37,6 +38,7 @@ async function updateView() {
 
     setupMovieClicks({ containerId: 'moviePreviewList', triggerSelector: 'img' });
     setupMovieClicks({ containerId: 'movieGenreList', triggerSelector: 'h3' });
+    lazyLoader();
   } catch(err) {
     console.error('Error al actualizar la vista:', err.message);
   }

@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import getTmdbData from "../../api/getTmdbData.js"
 import styles from "./movieDetail.module.css";
+import { IMG_URL_BASE } from '../../api/urlBase.js'
 
 async function createMovieDetail({ urlApi }) {
   try {
@@ -9,6 +10,15 @@ async function createMovieDetail({ urlApi }) {
 
     const template = Handlebars.compile(`
       <div class="container">
+        <img 
+          class="{{styles.backdrop}}" 
+          {{#if data.backdrop_path}}
+            src="${IMG_URL_BASE}/w1280{{data.backdrop_path}}"
+          {{/if}}
+          src="/404-not-found.webp"
+          alt="{{data.title}}"
+        />
+
         <header class="{{styles.movieDetail__header}}">
           <h1 class="{{styles.movieDetail__title}}">{{data.original_title}}</h1>
           <span class="{{styles.movieDetail__vote}}">{{data.vote_average}}</span>
