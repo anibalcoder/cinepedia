@@ -1,18 +1,13 @@
 import './styles/global.css';
 import './styles/vars.css';
 import createHeader from './components/header/header.js';
-import homePage from "./ui/home.js";
-import moviePage from './ui/movie.js';
-import searchPage from './ui/search.js';
-import setupMovieClicks from './utils/setupMovieClicks.js';
-import setupViewMoreClick from './utils/setupViewMoreClick.js';
-import setupSearchClick from './utils/setupSearchClick.js';
-import lazyLoader from './utils/lazyLoader.js'
+import { homePage, moviePage, searchPage } from './ui/index.js';
+import { setupSearchEvent } from './utils/index.js';
 
 const app = document.getElementById('app');
 const header = createHeader();
 app.appendChild(header);
-setupSearchClick();
+setupSearchEvent();
 
 async function updateView() {
   try {
@@ -33,12 +28,7 @@ async function updateView() {
       await searchPage({ app, searchType: 'discover', searchId: movieGenreId});
     } else {
       await homePage(app);
-      setupViewMoreClick();
     }
-
-    setupMovieClicks({ containerId: 'moviePreviewList', triggerSelector: 'img' });
-    setupMovieClicks({ containerId: 'movieGenreList', triggerSelector: 'h3' });
-    lazyLoader();
   } catch(err) {
     console.error('Error al actualizar la vista:', err.message);
   }

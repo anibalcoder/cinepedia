@@ -1,4 +1,4 @@
-function setupSearchClick() {
+function setupSearchEvent() {
   const searchBtn = document.getElementById('searchBtn');
   const searchText = document.getElementById('searchText');
 
@@ -17,4 +17,4 @@ function setupSearchClick() {
   }
 }
 
-export default setupSearchClick;
+export default setupSearchEvent;

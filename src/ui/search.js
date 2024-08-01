@@ -1,5 +1,12 @@
 import createSearch from "../components/search/search.js";
+import { setupContainerClick, removeLoadingClass, lazyLoader } from '../utils/index.js';
 import { API_URL_BASE } from '../api/urlBase.js';
+
+function setupSearchPageUtils() {
+  setupContainerClick({ containerId: 'moviePreviewList', triggerSelector: 'img' });
+  removeLoadingClass();
+  lazyLoader();
+}
 
 async function searchPage({ app, searchType, searchId }) {
   try {
@@ -13,7 +20,9 @@ async function searchPage({ app, searchType, searchId }) {
     if (!endpoint) throw new Error("Acción no reconocida");
     const searchUrl = `${API_URL_BASE}/${endpoint}`;
     const searchContent = await createSearch(searchUrl);
+
     app.appendChild(searchContent);
+    setupSearchPageUtils();
   } catch(err) {
     console.error('Error en searchPage: ', err.message);
   }

@@ -1,7 +1,15 @@
 import createMovieDetail from '../components/movieDetail/movieDetail.js';
 import createMovieGenres from '../components/movieGenres/movieGenres.js';
 import createMoviePreview from '../components/moviePreview/moviePreview.js';
+import { setupContainerClick, removeLoadingClass, lazyLoader } from '../utils/index.js';
 import { API_URL_BASE } from '../api/urlBase.js';
+
+function setupMoviePageUtils() {
+  setupContainerClick({ containerId: 'moviePreviewList', triggerSelector: 'img' });
+  setupContainerClick({ containerId: 'movieGenreList', triggerSelector: 'h3' });
+  removeLoadingClass();
+  lazyLoader();
+}
 
 async function moviePage({ app, movieId }) {
   try {
@@ -19,6 +27,7 @@ async function moviePage({ app, movieId }) {
     });
 
     app.append(movieDetail, movieGenres, moviePreview);
+    setupMoviePageUtils();
   } catch(err) {
     console.error('Error en moviePage: ', err.message);
   }

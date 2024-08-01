@@ -1,4 +1,4 @@
-function setupMovieClicks({ containerId, triggerSelector }) {
+function setupContainerClick({ containerId, triggerSelector }) {
   const container = document.getElementById(containerId);
 
   if (!container) {
@@ -23,4 +23,4 @@ function setupMovieClicks({ containerId, triggerSelector }) {
   })
 }
 
-export default setupMovieClicks;
+export default setupContainerClick;

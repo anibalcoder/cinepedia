@@ -1,6 +1,15 @@
 import createMoviePreview from '../components/moviePreview/moviePreview.js';
 import createMovieGenres from '../components/movieGenres/movieGenres.js';
+import { setupViewMoreClick, setupContainerClick, removeLoadingClass, lazyLoader } from '../utils/index.js';
 import { API_URL_BASE } from '../api/urlBase.js';
+
+function setupHomePageUtils() {
+  setupViewMoreClick();
+  setupContainerClick({ containerId: 'moviePreviewList', triggerSelector: 'img' });
+  setupContainerClick({ containerId: 'movieGenreList', triggerSelector: 'h3' });
+  removeLoadingClass();
+  lazyLoader();
+}
 
 async function homePage(app) {
   try {
@@ -16,6 +25,7 @@ async function homePage(app) {
     });
 
     app.append(moviePreview, movieGenres);
+    setupHomePageUtils();
   } catch(err) {
     console.error('Error en homePage: ', err.message);
   }
