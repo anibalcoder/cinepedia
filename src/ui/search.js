@@ -3,7 +3,16 @@ import { setupContainerClick, removeLoadingClass, lazyLoader } from '../utils/in
 import { API_URL_BASE } from '../api/urlBase.js';
 
 function setupSearchPageUtils() {
-  setupContainerClick({ containerId: 'moviePreviewList', triggerSelector: 'img' });
+  setupContainerClick({ 
+    containerIds: [
+      "moviePreviewList",
+      "moviesFavorite"
+    ],
+    triggerSelectors: [
+      'img',
+      'button'
+    ]
+  });
   removeLoadingClass();
   lazyLoader();
 }

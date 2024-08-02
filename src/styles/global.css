@@ -47,6 +47,10 @@ button {
   font-size: 0.875rem;
 }
 
+.liked-btn--active {
+  background-color: hsl(0, 100%, 50%);
+}
+
 .container {
   max-width: 1050px;
   margin-left: auto;

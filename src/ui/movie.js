@@ -5,8 +5,18 @@ import { setupContainerClick, removeLoadingClass, lazyLoader } from '../utils/in
 import { API_URL_BASE } from '../api/urlBase.js';
 
 function setupMoviePageUtils() {
-  setupContainerClick({ containerId: 'moviePreviewList', triggerSelector: 'img' });
-  setupContainerClick({ containerId: 'movieGenreList', triggerSelector: 'h3' });
+  setupContainerClick({ 
+    containerIds: [
+      "moviePreviewList",
+      "moviesFavorite",
+      "movieGenreList"
+    ],
+    triggerSelectors: [
+      'img',
+      'button',
+      'h3'
+    ]
+  });
   removeLoadingClass();
   lazyLoader();
 }

@@ -1,0 +1,43 @@
+.moviesFavorite__title {
+  margin-bottom: 1.5rem;
+}
+
+.moviesFavorite__list {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.moviesFavorite__item {
+  border-radius: .5rem;
+  cursor: pointer;
+  display: inline-block;
+  height: 225px;
+  margin-right: .5rem;
+  overflow: hidden;
+  position: relative;
+  width: 150px;
+}
+
+.moviesFavorite__image {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 500ms;
+  width: 100%;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.moviesFavorite__btn {
+  background-color: hsl(0, 100%, 50%);
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  transition: background-color 500ms;
+  width: 30px;
+}
